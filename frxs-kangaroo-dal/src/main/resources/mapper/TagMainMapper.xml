@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.frxs.kangaroo.platform.frxskangaroodal.mapper.TagMainMapper">
+    <resultMap id="BaseResultMap" type="com.frxs.kangaroo.platform.frxskangaroo.common.entity.TagMain">
+        <constructor>
+            <idArg column="id" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="code" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="createUserId" jdbcType="BIGINT" javaType="java.lang.Long"/>
+            <arg column="createUserName" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="modifyUserId" jdbcType="BIGINT" javaType="java.lang.Long"/>
+            <arg column="modifyUserName" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="tmCreate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+            <arg column="tmSmp" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,
+        name,
+        code,
+        createUserId,
+        createUserName,
+        modifyUserId,
+        modifyUserName,
+        tmCreate,
+        tmSmp
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from t_tag_main
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from t_tag_main
+        where id = #{id,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert" parameterType="com.frxs.kangaroo.platform.frxskangaroo.common.entity.TagMain">
+        insert into t_tag_main (id, name, code,
+                                createUserId, createUserName, modifyUserId,
+                                modifyUserName, tmCreate, tmSmp)
+        values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR},
+                #{createUserId,jdbcType=BIGINT}, #{createUserName,jdbcType=VARCHAR}, #{modifyUserId,jdbcType=BIGINT},
+                #{modifyUserName,jdbcType=VARCHAR}, #{tmCreate,jdbcType=TIMESTAMP}, #{tmSmp,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.frxs.kangaroo.platform.frxskangaroo.common.entity.TagMain">
+        insert into t_tag_main
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="code != null">
+                code,
+            </if>
+            <if test="createUserId != null">
+                createUserId,
+            </if>
+            <if test="createUserName != null">
+                createUserName,
+            </if>
+            <if test="modifyUserId != null">
+                modifyUserId,
+            </if>
+            <if test="modifyUserName != null">
+                modifyUserName,
+            </if>
+            <if test="tmCreate != null">
+                tmCreate,
+            </if>
+            <if test="tmSmp != null">
+                tmSmp,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="code != null">
+                #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="createUserId != null">
+                #{createUserId,jdbcType=BIGINT},
+            </if>
+            <if test="createUserName != null">
+                #{createUserName,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyUserId != null">
+                #{modifyUserId,jdbcType=BIGINT},
+            </if>
+            <if test="modifyUserName != null">
+                #{modifyUserName,jdbcType=VARCHAR},
+            </if>
+            <if test="tmCreate != null">
+                #{tmCreate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="tmSmp != null">
+                #{tmSmp,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective"
+            parameterType="com.frxs.kangaroo.platform.frxskangaroo.common.entity.TagMain">
+        update t_tag_main
+        <set>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="code != null">
+                code = #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="createUserId != null">
+                createUserId = #{createUserId,jdbcType=BIGINT},
+            </if>
+            <if test="createUserName != null">
+                createUserName = #{createUserName,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyUserId != null">
+                modifyUserId = #{modifyUserId,jdbcType=BIGINT},
+            </if>
+            <if test="modifyUserName != null">
+                modifyUserName = #{modifyUserName,jdbcType=VARCHAR},
+            </if>
+            <if test="tmCreate != null">
+                tmCreate = #{tmCreate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="tmSmp != null">
+                tmSmp = #{tmSmp,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.frxs.kangaroo.platform.frxskangaroo.common.entity.TagMain">
+        update t_tag_main
+        set name           = #{name,jdbcType=VARCHAR},
+            code           = #{code,jdbcType=VARCHAR},
+            createUserId   = #{createUserId,jdbcType=BIGINT},
+            createUserName = #{createUserName,jdbcType=VARCHAR},
+            modifyUserId   = #{modifyUserId,jdbcType=BIGINT},
+            modifyUserName = #{modifyUserName,jdbcType=VARCHAR},
+            tmCreate       = #{tmCreate,jdbcType=TIMESTAMP},
+            tmSmp          = #{tmSmp,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <select id="getList" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        t_tag_main
+        where
+        <if test="pageWrapper.filter.name != null">
+            #{pageWrapper.filter.name,jdbcType=VARCHAR}
+            and
+        </if>
+        <if test="pageWrapper.filter.code != null">
+            code = #{pageWrapper.filter.code,jdbcType=VARCHAR}
+            and
+        </if>
+        1=1
+        ORDER BY tmSmp DESC
+        <if test="pageWrapper.filter.code != null">
+            LIMIT #{pageWrapper.filter.offset},#{pageWrapper.filter.rows}
+        </if>
+
+    </select>
+</mapper>
